@@ -19,7 +19,7 @@ app.get('/', (req, res, next) => {
   res.send('Hello World')
 })
 
-app.use('/pairs', require('./routes/pairs'))
+app.use('/', require('./routes/pairs'))
 
 app.use((error, req, res, next) => {
   console.log(error)

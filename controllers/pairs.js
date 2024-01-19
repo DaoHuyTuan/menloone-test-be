@@ -1,5 +1,20 @@
+const { where } = require('sequelize')
 const Pair = require('../models/pair')
-exports.getPairById = (req, res, next) => {}
+exports.getPairById = (req, res, next) => {
+  const pair_id = req.query.pair_id
+  Pair.findOne({
+    where: {
+      pair_id: pair_id
+    }
+  })
+    .then(pair => {
+      if (!pair) {
+        return res.status(404).json({ message: 'Pair not found!' })
+      }
+      res.status(200).json({ pair: pair })
+    })
+    .catch(err => console.log(err))
+}
 
 exports.createPair = (req, res, next) => {
   const {
