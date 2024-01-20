@@ -1,5 +1,6 @@
 const { where } = require('sequelize')
 const Pair = require('../models/pair')
+
 exports.getPairById = (req, res, next) => {
   const pair_id = req.query.pair_id
   Pair.findOne({
@@ -42,6 +43,20 @@ exports.createPair = (req, res, next) => {
     .then(result => {
       res.status(201).json({
         message: 'Pair created successfully!',
+        pair: result
+      })
+    })
+    .catch(err => {
+      console.log(err)
+    })
+}
+
+exports.bulkCreate = (req, res, next) => {
+  const { data } = req.body
+  Pair.bulkCreate(data)
+    .then(result => {
+      res.status(201).json({
+        message: 'Pairs created successfully!',
         pair: result
       })
     })
