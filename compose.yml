@@ -41,6 +41,8 @@ services:
     restart: always
     environment:
       - SERVER_URL=http://node_app:3000
+      - CMC_API_KEY=19d42b96-3cf5-4367-9866-91ebd6d3f178
+      - CMC_API_URL=https://pro-api.coinmarketcap.com/v2/cryptocurrency/info
     depends_on:
       - node_db
       - node_app
