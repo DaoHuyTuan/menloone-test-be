@@ -15,6 +15,6 @@ const Pair = db.define('pair', {
   website: Sequelize.STRING,
   logo: Sequelize.STRING,
   github: Sequelize.STRING,
-  desciption: Sequelize.STRING
+  description: Sequelize.TEXT
 })
 module.exports = Pair

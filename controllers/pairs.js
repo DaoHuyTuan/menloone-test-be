@@ -5,7 +5,7 @@ exports.getPairById = (req, res, next) => {
   const pair_id = req.query.pair_id
   Pair.findOne({
     where: {
-      pair_id: pair_id
+      symbol: pair_id
     }
   })
     .then(pair => {
@@ -27,7 +27,7 @@ exports.createPair = (req, res, next) => {
     website,
     logo,
     github,
-    desciption
+    description
   } = req.body
   Pair.create({
     pair_id,
@@ -38,7 +38,7 @@ exports.createPair = (req, res, next) => {
     website,
     logo,
     github,
-    desciption
+    description
   })
     .then(result => {
       res.status(201).json({
@@ -68,7 +68,6 @@ exports.bulkCreate = (req, res, next) => {
 exports.getPairs = (req, res, next) => {
   Pair.findAll()
     .then(pairs => {
-      console.log('pairs', pairs)
       res.status(200).json({ pairs: pairs })
     })
     .catch(err => console.log(err))
